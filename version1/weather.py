@@ -1,3 +1,4 @@
+import os
 from __main__ import *
 import python_weather
 from geopy.geocoders import Nominatim
@@ -16,7 +17,7 @@ def getloaction():
 
 def local():
     data = getloaction()
-    api_key = "20f90078bf041039c1967bb5e1f9cabe"
+    api_key = os.environ.get("OPENWEATHER_API_KEY", "")
     base_url = "http://api.openweathermap.org/data/2.5/weather?units=metric&"
     city_name = data[2]
     complete_url = base_url + "appid=" + api_key + "&q=" + city_name
